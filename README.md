@@ -15,7 +15,7 @@
 
   </div>
 
-  <h3 align="center">Apple Mabook Website</h3>
+  <h3 align="center">Apple Macbook Website</h3>
 
 </div>
 
