@@ -1,10 +1,10 @@
-import { PresentationControls } from "@react-three/drei";
 import { useRef } from "react";
-import MacbookModel16 from "../models/Macbook-16";
-import MacbookModel14 from "../models/Macbook-14";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import { PresentationControls } from "@react-three/drei";
+import gsap from "gsap";
 
+import MacbookModel16 from "../models/Macbook-16.jsx";
+import MacbookModel14 from "../models/Macbook-14.jsx";
+import { useGSAP } from "@gsap/react";
 const ANIMATION_DURATION = 1;
 const OFFSET_DISTANCE = 5;
 
@@ -28,6 +28,7 @@ const moveGroup = (group, x) => {
 const ModelSwitcher = ({ scale, isMobile }) => {
   const SCALE_LARGE_DESKTOP = 0.08;
   const SCALE_LARGE_MOBILE = 0.05;
+
   const smallMacbookRef = useRef();
   const largeMacbookRef = useRef();
 
@@ -48,7 +49,7 @@ const ModelSwitcher = ({ scale, isMobile }) => {
       fadeMeshes(smallMacbookRef.current, 1);
       fadeMeshes(largeMacbookRef.current, 0);
     }
-  });
+  }, [scale]);
 
   const controlsConfig = {
     snap: true,
@@ -57,6 +58,7 @@ const ModelSwitcher = ({ scale, isMobile }) => {
     azimuth: [-Infinity, Infinity],
     config: { mass: 1, tension: 0, friction: 26 },
   };
+
   return (
     <>
       <PresentationControls {...controlsConfig}>
@@ -73,5 +75,4 @@ const ModelSwitcher = ({ scale, isMobile }) => {
     </>
   );
 };
-
 export default ModelSwitcher;
